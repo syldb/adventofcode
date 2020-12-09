@@ -13,11 +13,10 @@ def part1(data):
 
 
 def part2(data):
-    seat_ids = list(get_seat_id(pass_data) for pass_data in data)
-    for seat_id in seat_ids:
-        if ((seat_id + 1) not in seat_ids and
-            (seat_id + 2) in seat_ids):
-                return seat_id + 1
+    seat_ids = list(sorted(get_seat_id(p) for p in data))
+    for i, seat_id in enumerate(seat_ids):
+        if (seat_ids[i + 1] == seat_id + 2):
+            return seat_id + 1
 
 
 if __name__ == '__main__':
